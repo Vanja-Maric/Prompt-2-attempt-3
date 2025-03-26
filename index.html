@@ -1,405 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flower Shop Single-Page Application</title>
-  <style>
-    /* Reset some default browser styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      background-color: #fdfdfd;
-      padding: 1rem;
-    }
-    /* Navigation Bar */
-    nav {
-      background-color: #4a7c59;
-      padding: 0.5rem 1rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-    }
-    nav li {
-      margin-right: 1rem;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:focus,
-    nav a:hover {
-      text-decoration: underline;
-    }
-    /* Section Styling */
-    section {
-      margin-top: 2rem;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      background-color: #fff;
-    }
-    section h1, section h2, section h3, section h4, section h5, section h6 {
-      margin-bottom: 0.5rem;
-      color: #2c3e50;
-    }
-    section p {
-      margin-bottom: 1rem;
-      text-align: justify;
-    }
-    /* Form Styling */
-    form {
-      margin-top: 1rem;
-      padding: 1rem;
-      background-color: #eaf4ea;
-      border: 1px solid #4a7c59;
-      max-width: 600px;
-    }
-    form .form-group {
-      margin-bottom: 1rem;
-    }
-    form label {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-weight: bold;
-    }
-    form input[type="text"],
-    form select {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #999;
-      border-radius: 4px;
-    }
-    form input[type="radio"],
-    form input[type="checkbox"] {
-      margin-right: 0.5rem;
-    }
-    form button[type="submit"] {
-      padding: 0.5rem 1rem;
-      background-color: #4a7c59;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    form button[type="submit"]:hover,
-    form button[type="submit"]:focus {
-      background-color: #3a5d47;
-    }
-    /* Image Styling */
-    .image-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin-top: 1rem;
-    }
-    .image-gallery img {
-      max-width: 30%;
-      height: auto;
-      margin-bottom: 1rem;
-      border: 3px solid #ccc;
-    }
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blooming Flowers – Your Trusted Flower Shop</title>
+    <style>
+      /* Base styles for readability and color contrast */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        line-height: 1.6;
+        color: #222;
+        background-color: #fdfdfd;
+        margin: 0;
+        padding: 0;
+      }
+      /* Skip link: visible on focus for keyboard users */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #005a9c;
+        color: #fff;
+        padding: 8px;
+        z-index: 100;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+      header {
+        background-color: #005a9c;
+        color: #fff;
+        padding: 1em;
+      }
+      nav {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
       nav ul {
-        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
       }
-      nav li {
-        margin-bottom: 0.5rem;
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
       }
-      .image-gallery img {
-        max-width: 80%;
+      nav a:focus,
+      nav a:hover {
+        text-decoration: underline;
       }
-    }
-  </style>
-</head>
-<body>
-  <nav role="navigation" aria-label="Main Navigation">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+      main {
+        max-width: 1000px;
+        margin: 2em auto;
+        padding: 0 1em;
+      }
+      section {
+        margin-bottom: 3em;
+      }
+      section img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1em 0;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        margin-top: 1.5em;
+      }
+      /* Styling the form with proper spacing */
+      form {
+        border: 2px solid #005a9c;
+        padding: 1em;
+        margin-top: 1em;
+        background-color: #e6f2ff;
+      }
+      form fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+      }
+      form legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+      form label {
+        display: block;
+        margin-top: 0.5em;
+      }
+      form input[type="text"],
+      form select {
+        width: 100%;
+        padding: 0.5em;
+        margin-top: 0.3em;
+        border: 1px solid #666;
+      }
+      form input[type="radio"],
+      form input[type="checkbox"] {
+        margin-right: 0.3em;
+      }
+      form button {
+        background-color: #005a9c;
+        color: #fff;
+        border: none;
+        padding: 0.7em 1.2em;
+        margin-top: 1em;
+        cursor: pointer;
+      }
+      form button:hover,
+      form button:focus {
+        background-color: #004a80;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Skip navigation link for accessibility -->
+    <a href="#mainContent" class="skip-link">Skip to content</a>
 
-  <!-- Home Section -->
-  <section id="home" aria-labelledby="home-section">
-    <h1 id="home-section">Welcome to Our Flower Shop</h1>
-    <p>
-      This is sentence 1 for "Welcome to Our Flower Shop." 
-      This is sentence 2 for "Welcome to Our Flower Shop." 
-      This is sentence 3 for "Welcome to Our Flower Shop." 
-      This is sentence 4 for "Welcome to Our Flower Shop." 
-      This is sentence 5 for "Welcome to Our Flower Shop." 
-      This is sentence 6 for "Welcome to Our Flower Shop." 
-      This is sentence 7 for "Welcome to Our Flower Shop." 
-      This is sentence 8 for "Welcome to Our Flower Shop." 
-      This is sentence 9 for "Welcome to Our Flower Shop." 
-      This is sentence 10 for "Welcome to Our Flower Shop."
-    </p>
+    <header>
+      <nav role="navigation" aria-label="Main Navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <h2>Featured Bouquets</h2>
-    <p>
-      This is sentence 1 for "Featured Bouquets." 
-      This is sentence 2 for "Featured Bouquets." 
-      This is sentence 3 for "Featured Bouquets." 
-      This is sentence 4 for "Featured Bouquets." 
-      This is sentence 5 for "Featured Bouquets." 
-      This is sentence 6 for "Featured Bouquets." 
-      This is sentence 7 for "Featured Bouquets." 
-      This is sentence 8 for "Featured Bouquets." 
-      This is sentence 9 for "Featured Bouquets." 
-      This is sentence 10 for "Featured Bouquets."
-    </p>
+    <main id="mainContent">
+      <!-- Home Section -->
+      <section id="home">
+        <h1>Blooming Flowers – Your Trusted Flower Shop</h1>
+        <p>
+          Blooming Flowers is dedicated to providing fresh and beautiful floral arrangements for every occasion. 
+          We offer a wide variety of seasonal flowers that are sourced from trusted local growers. 
+          Our customers receive personalized service each time they step into our shop. 
+          We believe that each bouquet reflects the care and passion of our team. 
+          Our store has a warm and welcoming environment that makes visitors feel at home. 
+          Every arrangement is designed to brighten your day and celebrate life’s milestones. 
+          We take pride in our attention to detail and creative designs. 
+          Our commitment to quality means that every petal is cared for with passion. 
+          We continuously research ways to innovate and blend tradition with modern style. 
+          Customer satisfaction is at the heart of everything we do.
+        </p>
+        
+        <h2>Home</h2>
+        <p>
+          Our Home section is designed to welcome you with warmth and clarity. 
+          We strive to create a comfortable and intuitive environment for every visitor. 
+          The layout is organized to guide you through our offerings seamlessly. 
+          In this section, you will learn about our values and what motivates our service. 
+          We present information in a clear, accessible manner to help you navigate our site. 
+          The design ensures that you can locate essential updates immediately. 
+          Every element is arranged to improve your browsing experience. 
+          We have considered accessibility needs to serve users with visual impairments. 
+          The high contrast and logical layout make the information easy to read. 
+          Our Home section is the starting point for all the beautiful experiences we offer.
+        </p>
+        
+        <h3>Welcome to Our Store</h3>
+        <p>
+          We extend a heartfelt welcome to everyone who visits our online store. 
+          The design of our website reflects the beauty of our flower arrangements. 
+          Every detail is carefully planned to make you feel valued and informed. 
+          We present our products with clear descriptions that are easy to understand. 
+          Our friendly tone and quality images invite you to explore further. 
+          We maintain consistency in language to help users navigate effortlessly. 
+          The information is grouped in a way that tells our story comprehensively. 
+          We have used high-contrast text to ensure readability even on smaller screens. 
+          Each feature of our store has been tested with accessibility in mind. 
+          Our goal is that you leave our site as inspired as you are welcomed.
+        </p>
+        
+        <h4>Featured Bouquet: Tulips</h4>
+        <p>
+          Our featured bouquet of tulips represents the vibrant spirit of spring. 
+          This arrangement is carefully designed to symbolize renewal and elegance. 
+          Each tulip is selected for its perfect color and graceful form. 
+          The bouquet is arranged so that every blossom stands out beautifully. 
+          It is a popular choice for celebrations and special moments. 
+          The design of the tulip arrangement reflects our commitment to quality. 
+          Customers often compliment the balanced color and fine texture of the petals. 
+          The featured bouquet is a testament to our artistic approach in floral design. 
+          We invite you to explore more about our tulips and other seasonal selections. 
+          The image of the bouquet, tulips.png, visually celebrates the beauty of nature.
+        </p>
+      </section>
 
-    <h3>Seasonal Specials</h3>
-    <p>
-      This is sentence 1 for "Seasonal Specials." 
-      This is sentence 2 for "Seasonal Specials." 
-      This is sentence 3 for "Seasonal Specials." 
-      This is sentence 4 for "Seasonal Specials." 
-      This is sentence 5 for "Seasonal Specials." 
-      This is sentence 6 for "Seasonal Specials." 
-      This is sentence 7 for "Seasonal Specials." 
-      This is sentence 8 for "Seasonal Specials." 
-      This is sentence 9 for "Seasonal Specials." 
-      This is sentence 10 for "Seasonal Specials."
-    </p>
+      <!-- About Section -->
+      <section id="about">
+        <h2>About Us</h2>
+        <p>
+          Our About Us section offers insight into who we are and what we value. 
+          We believe that every flower tells a story of passion and dedication. 
+          The information here has been crafted to be both engaging and informative. 
+          Our history as a flower shop is rich with experiences and memorable moments. 
+          We have served our community with honesty and care over many years. 
+          Every detail shared here is meant to build trust and transparency. 
+          Our vision for the future is interwoven with our love for nature. 
+          The content is organized to be accessible to every chapter of life. 
+          We have paid attention to the layout and language for readability. 
+          Our aim is to invite you into our story and share our beautiful journey.
+        </p>
+        
+        <h3>Our History</h3>
+        <p>
+          Our history dates back to the early days of passionate entrepreneurship. 
+          We started as a small neighborhood shop with big dreams in mind. 
+          Over time, our reputation grew due to our consistent quality and care. 
+          Every arrangement carried the mark of our dedication to beauty. 
+          Our journey has been filled with challenges that made us stronger. 
+          We embraced change while staying true to our artistic roots. 
+          Our loyal customers have been an inspiration throughout the years. 
+          We ensure that our legacy continues to inspire future generations. 
+          Historical milestones have shaped our identity in the world of flowers. 
+          Each chapter in our history reflects our commitment to excellence.
+        </p>
+        
+        <h4>Our Vision</h4>
+        <p>
+          Our vision is to create a world filled with beauty, one bouquet at a time. 
+          We strive to make high-quality floral arrangements accessible to everyone. 
+          Innovation and tradition blend perfectly in our creative process. 
+          We listen carefully to the needs and dreams of our community. 
+          Our future plans include expanding our services to bring nature closer to you. 
+          We remain committed to sustainable practices and locally sourced products. 
+          Every idea we implement is centered on enhancing the customer experience. 
+          Our vision also embraces modern technology to improve accessibility. 
+          We put your needs at the forefront when designing our products and services. 
+          Ultimately, our vision is to create moments of joy and beauty for every visitor.
+        </p>
+      </section>
 
-    <h4>Customer Testimonials</h4>
-    <p>
-      This is sentence 1 for "Customer Testimonials." 
-      This is sentence 2 for "Customer Testimonials." 
-      This is sentence 3 for "Customer Testimonials." 
-      This is sentence 4 for "Customer Testimonials." 
-      This is sentence 5 for "Customer Testimonials." 
-      This is sentence 6 for "Customer Testimonials." 
-      This is sentence 7 for "Customer Testimonials." 
-      This is sentence 8 for "Customer Testimonials." 
-      This is sentence 9 for "Customer Testimonials." 
-      This is sentence 10 for "Customer Testimonials."
-    </p>
+      <!-- Services Section -->
+      <section id="services">
+        <h2>Services</h2>
+        <p>
+          In our Services section, we present the range of offerings designed for your every need. 
+          We have crafted our services to be as beautiful and varied as the flowers we sell. 
+          Every service is developed with care and an emphasis on creativity. 
+          We ensure that our information is easy to navigate and understand. 
+          The services are explained with simple language and clear details. 
+          We continuously update our offerings to keep up with changing trends. 
+          Our high-quality images further illustrate the beauty of what we offer. 
+          Accessibility has been key to our design and content strategy. 
+          Every service listed is supported with clear context and detailed descriptions. 
+          We invite you to explore and experience the art of floral design.
+        </p>
+        
+        <h3>Flower Arrangements</h3>
+        <p>
+          Our flower arrangements are crafted by experienced florists with a passion for design. 
+          The artistic selection of blooms enhances every event and celebration. 
+          Each arrangement is a reflection of creativity, skill, and care. 
+          We ensure that every detail is carefully considered in the design process. 
+          The color schemes and textures are chosen to bring harmony to your space. 
+          We incorporate seasonal blooms and unique accents into every piece. 
+          Customer feedback is essential in refining each design. 
+          We use high-quality images to help you visualize our dedicated work. 
+          Roses, among other flowers, are a staple within our arrangement selection. 
+          The accompanying image, roses.png, provides a visual delight of our craft.
+        </p>
+        <!-- Display roses image -->
+        <img src="roses.png" alt="Bouquet of Roses" />
 
-    <!-- Image Gallery in Home Section -->
-    <div class="image-gallery">
-      <img src="tulips.png" alt="Bouquet of tulips">
-      <img src="roses.png" alt="Bouquet of roses">
-      <img src="lilies.png" alt="Bouquet of lilies">
-    </div>
-  </section>
+        <h4>Occasions We Serve</h4>
+        <p>
+          We take pride in serving a large variety of special occasions with our flower arrangements. 
+          Our services are designed to contribute to birthdays, anniversaries, weddings, and many more. 
+          Each arrangement is tailored to match the tone of the event. 
+          We believe that flowers can convey emotions that words sometimes cannot. 
+          Celebrations are made more memorable with a thoughtfully designed bouquet. 
+          We provide detailed guidance on selecting the right arrangement for any occasion. 
+          Our team is experienced in customizing bouquets to fit your specific needs. 
+          The creativity of our arrangements is backed by years of practice and passion. 
+          We work hard to ensure that each customer receives exactly what they envision. 
+          The image lilies.png, displayed below, celebrates our array of occasion-specific bouquets.
+        </p>
+        <!-- Display lilies image -->
+        <img src="lilies.png" alt="Bouquet of Lilies" />
+      </section>
 
-  <!-- About Section -->
-  <section id="about" aria-labelledby="about-section">
-    <h2 id="about-section">Our Story</h2>
-    <p>
-      This is sentence 1 for "Our Story." 
-      This is sentence 2 for "Our Story." 
-      This is sentence 3 for "Our Story." 
-      This is sentence 4 for "Our Story." 
-      This is sentence 5 for "Our Story." 
-      This is sentence 6 for "Our Story." 
-      This is sentence 7 for "Our Story." 
-      This is sentence 8 for "Our Story." 
-      This is sentence 9 for "Our Story." 
-      This is sentence 10 for "Our Story."
-    </p>
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <p>
+          Our Contact Us section is designed to provide you with clear ways to get in touch. 
+          Every detail here has been written to ensure the information is accessible. 
+          We are committed to responding promptly to your inquiries and feedback. 
+          Our goal is to build long-lasting relationships with every customer. 
+          The information provided is verified and updated regularly for accuracy. 
+          We encourage you to connect with us using the contact form below. 
+          Our team listens carefully to understand your requirements. 
+          We have made our contact details easy to read and navigate. 
+          Accessibility remains a priority so that no one misses any important information. 
+          Every message we receive is treated with respect and urgency.
+        </p>
+        
+        <h3>Get in Touch</h3>
+        <p>
+          We invite you to get in touch with us at any time through our easy-to-use contact form. 
+          Your opinions and needs are valuable as we strive to improve our services. 
+          The form is designed with clear labels, making it easy to use for everyone. 
+          We have ensured that all interactive elements are keyboard accessible. 
+          Each field in the form is accompanied by a descriptive label. 
+          The design of the form is intuitive and straightforward to reduce confusion. 
+          You can provide additional details or queries in the text input area. 
+          We are committed to responding quickly and efficiently to every query. 
+          Our accessibility practices guarantee that the form works well on all devices. 
+          We appreciate you taking the time to reach out and share your thoughts.
+        </p>
+        
+        <h4>Our Commitment to Quality</h4>
+        <p>
+          Quality is at the heart of everything we do as a flower shop. 
+          We ensure that every product and service meets the highest standards. 
+          Our commitment to excellence is visible in every bouquet we create. 
+          Detailed checks and expert insights contribute to our outstanding quality. 
+          We listen closely to our customers’ feedback to constantly improve. 
+          Our quality measures encompass both the products and our customer service. 
+          Transparency in our process has helped us build trust over time. 
+          We use only the best locally sourced flowers in our arrangements. 
+          Our passion for excellence drives us to innovate and excel daily. 
+          Every statement of quality on our site is backed by years of dedication.
+        </p>
+        
+        <h5>Customer Feedback</h5>
+        <p>
+          Customer feedback is a cornerstone of our ongoing improvement process. 
+          We actively seek honest opinions about our products and services. 
+          Every comment is read carefully and considered in our daily operations. 
+          Feedback helps us to fine-tune our creative designs and service offerings. 
+          We celebrate positive reviews and learn from constructive criticism. 
+          Our customers enjoy a transparent and respectful communication process. 
+          Their opinions drive us to maintain high standards. 
+          We are proud to display our customer endorsements on our website. 
+          Each testimonial is a reminder of our commitment to satisfaction. 
+          We value customer input as an opportunity for continuous growth.
+        </p>
+        
+        <h6>Visit Us Today</h6>
+        <p>
+          We warmly invite you to visit our store to experience the magic of fresh flowers firsthand. 
+          Our physical location is designed for a welcoming and comfortable visit. 
+          Every element in our store echoes our dedication to beauty and quality. 
+          We take great care in creating an environment that is accessible to all. 
+          Friendly staff are always available to guide you and answer any questions. 
+          Our commitment to inclusivity ensures that every visitor feels valued. 
+          Special events and seasonal displays offer unique experiences. 
+          We encourage you to explore our range of floral arrangements in person. 
+          Accessibility and clear signage make it easy to navigate our store. 
+          A visit to our shop is a journey into a world of elegance and care.
+        </p>
+        
+        <!-- Accessible Contact Form -->
+        <form action="#" method="post" aria-describedby="contactInstructions">
+          <fieldset>
+            <legend>Contact Form</legend>
+            <p id="contactInstructions">Please fill out the form below. Fields are clearly labeled and required information is indicated.</p>
+            <label for="name">Name (required):</label>
+            <input type="text" id="name" name="name" required />
 
-    <h3>Quality Assurance</h3>
-    <p>
-      This is sentence 1 for "Quality Assurance." 
-      This is sentence 2 for "Quality Assurance." 
-      This is sentence 3 for "Quality Assurance." 
-      This is sentence 4 for "Quality Assurance." 
-      This is sentence 5 for "Quality Assurance." 
-      This is sentence 6 for "Quality Assurance." 
-      This is sentence 7 for "Quality Assurance." 
-      This is sentence 8 for "Quality Assurance." 
-      This is sentence 9 for "Quality Assurance." 
-      This is sentence 10 for "Quality Assurance."
-    </p>
+            <p>Preferred Contact Method:</p>
+            <label for="delivery">
+              <input type="radio" id="delivery" name="contactMethod" value="delivery" />
+              Delivery
+            </label>
+            <label for="pickup">
+              <input type="radio" id="pickup" name="contactMethod" value="pickup" />
+              Pickup
+            </label>
 
-    <h4>Community Involvement</h4>
-    <p>
-      This is sentence 1 for "Community Involvement." 
-      This is sentence 2 for "Community Involvement." 
-      This is sentence 3 for "Community Involvement." 
-      This is sentence 4 for "Community Involvement." 
-      This is sentence 5 for "Community Involvement." 
-      This is sentence 6 for "Community Involvement." 
-      This is sentence 7 for "Community Involvement." 
-      This is sentence 8 for "Community Involvement." 
-      This is sentence 9 for "Community Involvement." 
-      This is sentence 10 for "Community Involvement."
-    </p>
+            <label for="newsletter">
+              <input type="checkbox" id="newsletter" name="newsletter" />
+              Subscribe to our newsletter
+            </label>
 
-    <h5>Sustainability Practices</h5>
-    <p>
-      This is sentence 1 for "Sustainability Practices." 
-      This is sentence 2 for "Sustainability Practices." 
-      This is sentence 3 for "Sustainability Practices." 
-      This is sentence 4 for "Sustainability Practices." 
-      This is sentence 5 for "Sustainability Practices." 
-      This is sentence 6 for "Sustainability Practices." 
-      This is sentence 7 for "Sustainability Practices." 
-      This is sentence 8 for "Sustainability Practices." 
-      This is sentence 9 for "Sustainability Practices." 
-      This is sentence 10 for "Sustainability Practices."
-    </p>
-  </section>
+            <label for="occasion">Occasion:</label>
+            <select id="occasion" name="occasion">
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="other">Other</option>
+            </select>
 
-  <!-- Services Section -->
-  <section id="services" aria-labelledby="services-section">
-    <h3 id="services-section">Custom Arrangements</h3>
-    <p>
-      This is sentence 1 for "Custom Arrangements." 
-      This is sentence 2 for "Custom Arrangements." 
-      This is sentence 3 for "Custom Arrangements." 
-      This is sentence 4 for "Custom Arrangements." 
-      This is sentence 5 for "Custom Arrangements." 
-      This is sentence 6 for "Custom Arrangements." 
-      This is sentence 7 for "Custom Arrangements." 
-      This is sentence 8 for "Custom Arrangements." 
-      This is sentence 9 for "Custom Arrangements." 
-      This is sentence 10 for "Custom Arrangements."
-    </p>
-
-    <h4>Delivery Services</h4>
-    <p>
-      This is sentence 1 for "Delivery Services." 
-      This is sentence 2 for "Delivery Services." 
-      This is sentence 3 for "Delivery Services." 
-      This is sentence 4 for "Delivery Services." 
-      This is sentence 5 for "Delivery Services." 
-      This is sentence 6 for "Delivery Services." 
-      This is sentence 7 for "Delivery Services." 
-      This is sentence 8 for "Delivery Services." 
-      This is sentence 9 for "Delivery Services." 
-      This is sentence 10 for "Delivery Services."
-    </p>
-
-    <h5>Corporate Events</h5>
-    <p>
-      This is sentence 1 for "Corporate Events." 
-      This is sentence 2 for "Corporate Events." 
-      This is sentence 3 for "Corporate Events." 
-      This is sentence 4 for "Corporate Events." 
-      This is sentence 5 for "Corporate Events." 
-      This is sentence 6 for "Corporate Events." 
-      This is sentence 7 for "Corporate Events." 
-      This is sentence 8 for "Corporate Events." 
-      This is sentence 9 for "Corporate Events." 
-      This is sentence 10 for "Corporate Events."
-    </p>
-
-    <h6>Wedding Packages</h6>
-    <p>
-      This is sentence 1 for "Wedding Packages." 
-      This is sentence 2 for "Wedding Packages." 
-      This is sentence 3 for "Wedding Packages." 
-      This is sentence 4 for "Wedding Packages." 
-      This is sentence 5 for "Wedding Packages." 
-      This is sentence 6 for "Wedding Packages." 
-      This is sentence 7 for "Wedding Packages." 
-      This is sentence 8 for "Wedding Packages." 
-      This is sentence 9 for "Wedding Packages." 
-      This is sentence 10 for "Wedding Packages."
-    </p>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" aria-labelledby="contact-section">
-    <h3 id="contact-section">Get in Touch</h3>
-    <p>
-      This is sentence 1 for "Get in Touch." 
-      This is sentence 2 for "Get in Touch." 
-      This is sentence 3 for "Get in Touch." 
-      This is sentence 4 for "Get in Touch." 
-      This is sentence 5 for "Get in Touch." 
-      This is sentence 6 for "Get in Touch." 
-      This is sentence 7 for "Get in Touch." 
-      This is sentence 8 for "Get in Touch." 
-      This is sentence 9 for "Get in Touch." 
-      This is sentence 10 for "Get in Touch."
-    </p>
-
-    <h4>Store Location</h4>
-    <p>
-      This is sentence 1 for "Store Location." 
-      This is sentence 2 for "Store Location." 
-      This is sentence 3 for "Store Location." 
-      This is sentence 4 for "Store Location." 
-      This is sentence 5 for "Store Location." 
-      This is sentence 6 for "Store Location." 
-      This is sentence 7 for "Store Location." 
-      This is sentence 8 for "Store Location." 
-      This is sentence 9 for "Store Location." 
-      This is sentence 10 for "Store Location."
-    </p>
-
-    <h5>Feedback and Inquiries</h5>
-    <p>
-      This is sentence 1 for "Feedback and Inquiries." 
-      This is sentence 2 for "Feedback and Inquiries." 
-      This is sentence 3 for "Feedback and Inquiries." 
-      This is sentence 4 for "Feedback and Inquiries." 
-      This is sentence 5 for "Feedback and Inquiries." 
-      This is sentence 6 for "Feedback and Inquiries." 
-      This is sentence 7 for "Feedback and Inquiries." 
-      This is sentence 8 for "Feedback and Inquiries." 
-      This is sentence 9 for "Feedback and Inquiries." 
-      This is sentence 10 for "Feedback and Inquiries."
-    </p>
-
-    <!-- Contact Form -->
-    <form action="#" method="post" aria-labelledby="contact-form">
-      <fieldset>
-        <legend id="contact-form">Contact Form <span aria-hidden="true" style="color: red;">*</span></legend>
-        <!-- Text Input -->
-        <div class="form-group">
-          <label for="name">Your Name <span aria-hidden="true" style="color: red;">*</span></label>
-          <input type="text" id="name" name="name" required aria-required="true">
-        </div>
-        <!-- Radio Buttons -->
-        <div class="form-group">
-          <span id="contact-method-label"><strong>Preferred Contact Method</strong></span>
-          <div>
-            <input type="radio" id="contact-email" name="contact-method" value="email">
-            <label for="contact-email">Email</label>
-          </div>
-          <div>
-            <input type="radio" id="contact-phone" name="contact-method" value="phone">
-            <label for="contact-phone">Phone</label>
-          </div>
-        </div>
-        <!-- Checkbox -->
-        <div class="form-group">
-          <input type="checkbox" id="subscribe" name="subscribe">
-          <label for="subscribe">Subscribe to our newsletter</label>
-        </div>
-        <!-- Select Dropdown -->
-        <div class="form-group">
-          <label for="inquiry-type">Inquiry Type</label>
-          <select id="inquiry-type" name="inquiry-type">
-            <option value="general">General Question</option>
-            <option value="order">Order Issue</option>
-            <option value="feedback">Feedback</option>
-          </select>
-        </div>
-        <!-- Submit Button -->
-        <div class="form-group">
-          <button type="submit">Submit Inquiry</button>
-        </div>
-      </fieldset>
-    </form>
-  </section>
-</body>
+            <button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>
